@@ -475,3 +475,26 @@ context:
   imageLarge:
     url: '//placekitten.com/829/585'
 ```
+
+## Automated tests of rendered patterns
+
+The pattern library is primarily intended for manual tests while developing, however it can also be useful for automated tests with the `render_patterns` management command. This command renders all of the patterns available to the pattern library as separate HTML files, in order to:
+
+* Automatically check all patterns render without template errors.
+* If desired, run further automated static analysis or QA checks on the rendered patterns.
+* If desired, host a snapshot of the rendered patterns for documentation purposes, or regression testing.
+
+Usage:
+
+```sh
+# Render all patterns to the default directory.
+./manage.py render_patterns
+# Render patterns without outputting files.
+./manage.py render_patterns --dry-run
+# Render patterns to a specific directory.
+./manage.py render_patterns --output ./my/path/relative/to/cwd
+# Render patterns to stdout.
+./manage.py render_patterns --dry-run --verbosity 2
+# View all options
+./manage.py render_patterns --help
+```
